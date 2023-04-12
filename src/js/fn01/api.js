@@ -4,5 +4,3 @@ export function getRandomHexColor() {
 export const [body, start, stop] = ['body', '[data-start]', '[data-stop]'].map(
   item => document.querySelector(item)
 );
-
-export let intervalFn = null;

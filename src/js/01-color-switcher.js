@@ -1,4 +1,6 @@
-import { getRandomHexColor, intervalFn, body, start, stop } from './fn01/api';
+import { getRandomHexColor, body, start, stop } from './fn01/api.js';
+
+let intervalFn = null;
 
 function startInterval(event) {
   if (!intervalFn) {
