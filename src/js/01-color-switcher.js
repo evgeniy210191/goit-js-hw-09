@@ -9,9 +9,9 @@ function startInterval(event) {
   }
 }
 function stopInterval(event) {
-  intervalFn = null
+  intervalFn = null;
   clearInterval(intervalFn);
 }
 
 start.addEventListener('click', startInterval);
-stop.addEventListener('click', stopInterval);``
+stop.addEventListener('click', stopInterval);
