@@ -25,6 +25,7 @@ img {
 }
 .timer{
   display: flex;
+  width:33.3333%
 }
 .value{
   font-size: 42px;
