@@ -8,7 +8,7 @@ const [delay, step, amount, submit] = [
 
 function createPromise(position, delay) {
   return (promise = new Promise((resolve, reject) => {
-    const shouldResolve = Math.random() > 0.5;
+    const shouldResolve = Math.random() > 0.3;
 
     if (shouldResolve) {
       resolve(
@@ -24,18 +24,18 @@ function createPromise(position, delay) {
   }));
 }
 const callPromise = event => {
-  event.preventDefault()
-  const date = Date.now()
+  event.preventDefault();
+  const date = Date.now();
   setTimeout(() => {
     for (let i = 1; i <= amount.value; i++) {
       setTimeout(() => {
-      let timeNow = Date.now() - date;
-      return createPromise(i, timeNow)
-        .then(res => res)
-        .catch(res => res);
-    }, i * step.value);
-  }
-  }, delay.value)
+        let timeNow = Date.now() - date;
+        return createPromise(i, timeNow)
+          .then(res => res)
+          .catch(res => res);
+      }, (i - 1) * step.value);
+    }
+  }, delay.value);
 };
 
 submit.addEventListener('click', callPromise);
