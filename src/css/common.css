@@ -33,3 +33,23 @@ img {
 .label{
   font-size: 12px;
 }
+
+.form{
+  display: flex;
+  margin: 0 auto;
+  width:800px;
+  align-items: flex-end;
+}
+button[type="submit"] {
+  height:25px;
+}
+.form label {
+  display: flex;
+  flex-direction: column;
+  width:200px;
+  margin-right: 20px;
+}
+
+.form input {
+  height:25px
+}

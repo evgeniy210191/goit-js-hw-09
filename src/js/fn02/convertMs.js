@@ -20,3 +20,14 @@ export function convertMs(ms) {
   return { days, hours, minutes, seconds};
 }
 
+export function render(count, time) {
+  const valuesCounter = Object.values(count);
+  const valuesCounterSum = valuesCounter.reduce((acc, item) => {
+    acc += item
+    return acc
+  })
+  
+  if (valuesCounterSum === 0) {
+    clearInterval(time);
+  }
+};

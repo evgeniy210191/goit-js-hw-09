@@ -1,6 +1,7 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
-import { convertMs } from './fn02/convertMs.js';
+import { convertMs, render, addLeadingZero } from './fn02/convertMs.js';
+import { addLeadingZero } from './fn02/addLeadingZero.js';
 import Notiflix from 'notiflix';
 const [start, days, hours, minutes, seconds] = [
   '[data-start]',
@@ -9,7 +10,7 @@ const [start, days, hours, minutes, seconds] = [
   '[data-minutes]',
   '[data-seconds]',
 ].map(item => document.querySelector(item));
-
+const valueCounterStr = document.querySelectorAll('.value')
 let date;
 
 const config = {
@@ -19,7 +20,7 @@ const config = {
   dateFormat: 'Y-m-d H:i',
   time_24hr: true,
   minuteIncrement: 1,
-  
+
   onClose: function (selectedDates) {
     date = selectedDates[0];
     if (selectedDates[0].getTime() - Date.now() < 0) {
@@ -27,10 +28,6 @@ const config = {
       return;
     }
     start.disabled = false;
-
-    // if (date.getTime() - Date.now() === 0) {
-    //   clearInterval(timer);
-    // }
   },
 };
 
@@ -39,36 +36,16 @@ flatpickr('input[type="text"]', config);
 let timer = null;
 
 const startCounter = function (event) {
-  
   timer = setInterval(() => {
     const counter = convertMs(date.getTime() - Date.now());
     days.innerHTML = counter.days;
     hours.innerHTML = counter.hours;
     minutes.innerHTML = counter.minutes;
     seconds.innerHTML = counter.seconds;
-    addLeadingZero(counter);
-    render(counter);
+    addLeadingZero(valueCounterStr);
+    render(counter, timer);
   }, 1000);
 };
 
 start.addEventListener('click', startCounter);
-function render(count) {
-  const valuesCounter = Object.values(count);
-  const valuesCounterSum = valuesCounter.reduce((acc, item) => {
-    acc += item
-    return acc
-  })
-  
-  if (valuesCounterSum === 0) {
-    clearInterval(timer);
-  }
-};
 
-function addLeadingZero(value) {
-  const valuesCounter = Object.values(value);
-  for (const item of valuesCounter) {
-    console.log(item);
-    
-  };
-};
-// padStart();
