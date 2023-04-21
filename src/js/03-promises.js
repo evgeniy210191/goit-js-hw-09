@@ -25,11 +25,12 @@ function createPromise(position, delay) {
 }
 const callPromise = event => {
   event.preventDefault();
-  const date = Date.now();
+  // const date = Date.now();
   setTimeout(() => {
     for (let i = 1; i <= amount.value; i++) {
       setTimeout(() => {
-        let timeNow = Date.now() - date;
+        // let timeNow = Date.now() - date;
+        let timeNow = i * step.value + +delay.value;
         return createPromise(i, timeNow)
           .then(res => res)
           .catch(res => res);
