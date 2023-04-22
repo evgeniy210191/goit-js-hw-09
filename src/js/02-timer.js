@@ -12,7 +12,7 @@ const [start, days, hours, minutes, seconds] = [
 ].map(item => document.querySelector(item));
 const valueCounterStr = document.querySelectorAll('.value')
 let date;
-
+let getDate = new Date
 const config = {
   enableTime: true,
   altInput: true,
@@ -20,6 +20,7 @@ const config = {
   dateFormat: 'Y-m-d H:i',
   time_24hr: true,
   minuteIncrement: 1,
+  defaultDate: new Date(),
 
   onClose: function (selectedDates) {
     date = selectedDates[0];
@@ -43,7 +44,7 @@ const startCounter = function (event) {
     minutes.innerHTML = counter.minutes;
     seconds.innerHTML = counter.seconds;
     addLeadingZero(valueCounterStr);
-    render(counter, timer);
+    render(counter, timer, start);
   }, 1000);
 };
 

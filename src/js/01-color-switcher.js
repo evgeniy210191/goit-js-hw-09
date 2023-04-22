@@ -12,5 +12,5 @@ function stopInterval(event) {
   clearInterval(intervalFn);
 }
 
-start.addEventListener('click', startInterval);
+start.addEventListener('click', startInterval, {once:true});
 stop.addEventListener('click', stopInterval);

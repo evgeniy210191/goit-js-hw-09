@@ -20,7 +20,7 @@ export function convertMs(ms) {
   return { days, hours, minutes, seconds};
 }
 
-export function render(count, time) {
+export function render(count, time, elem) {
   const valuesCounter = Object.values(count);
   const valuesCounterSum = valuesCounter.reduce((acc, item) => {
     acc += item
@@ -28,6 +28,7 @@ export function render(count, time) {
   })
   
   if (valuesCounterSum === 0) {
+    elem.disabled = true;
     clearInterval(time);
   }
 };
