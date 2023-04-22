@@ -39,6 +39,9 @@ let timer = null;
 const startCounter = function (event) {
   timer = setInterval(() => {
     const counter = convertMs(date.getTime() - Date.now());
+    if (date.getTime() - Date.now() < 0) {
+      return
+    }
     days.innerHTML = counter.days;
     hours.innerHTML = counter.hours;
     minutes.innerHTML = counter.minutes;
