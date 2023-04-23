@@ -28,11 +28,12 @@ const callPromise = event => {
   setTimeout(() => {
     for (let i = 0; i < amount.value; i++) {
       setTimeout(() => {
+        let num = i + 1;
         let timeNow = i * step.value + +delay.value;
-        return createPromise(i, timeNow)
+        return createPromise(num, timeNow)
           .then(res => res)
           .catch(res => res);
-      }, i * step.value)
+      }, i * step.value);
     }
   }, delay.value);
 };
