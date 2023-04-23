@@ -4,11 +4,10 @@ let intervalFn = null;
 function startInterval(event) {
   if (intervalFn) {
     return;
-  } else {
-    intervalFn = setInterval(() => {
-      body.style.background = getRandomHexColor();
-    }, 1000);
   }
+  intervalFn = setInterval(() => {
+    body.style.background = getRandomHexColor();
+  }, 1000);
 }
 
 function stopInterval(event) {
